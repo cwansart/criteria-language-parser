@@ -16,6 +16,16 @@ public class CriteriaListenerImpl implements CriteriaListener{
     }
 
     @Override
+    public void enterAgeToken(CriteriaParser.AgeTokenContext ctx) {
+        System.out.println("ageToken:" + ctx.getText());
+    }
+
+    @Override
+    public void exitAgeToken(CriteriaParser.AgeTokenContext ctx) {
+
+    }
+
+    @Override
     public void enterAge(CriteriaParser.AgeContext ctx) {
         System.out.println("enterAge:"+ ctx.INT(0).getText());
     }

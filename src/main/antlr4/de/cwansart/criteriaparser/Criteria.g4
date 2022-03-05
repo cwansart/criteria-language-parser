@@ -10,9 +10,10 @@ OPENING_BRACKETS : '('
                  ;
 WS  : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
-AGE_TOKEN : 'age'
+ageToken : 'age'
           | 'alter'
           ;
-age: 'age' INT '-' INT
-   | 'age' OPENING_BRACKETS INT '-' INT CLOSING_BRACKETS
+
+age: ageToken INT '-' INT
+   | ageToken OPENING_BRACKETS INT '-' INT CLOSING_BRACKETS
    ;
