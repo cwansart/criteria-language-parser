@@ -11,7 +11,6 @@ age: ageIdentifier INT '-' INT
    ;
 
 // Tokens
-ID  : [a-z]+ ;             // match lower-case identifiers
 INT :  '0'..'9'+ ; //
 CLOSING_BRACKETS : ')'
                  | ']'
