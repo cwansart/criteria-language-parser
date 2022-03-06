@@ -1,5 +1,8 @@
-package de.cwansart.criteriaparser;
+package de.cwansart.criteriaparser.parser;
 
+import de.cwansart.criteriaparser.CriteriaLexer;
+import de.cwansart.criteriaparser.CriteriaListenerImpl;
+import de.cwansart.criteriaparser.CriteriaParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -10,7 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class AgeTest {
+class GenderTest {
 
     private CriteriaListenerImpl listener;
 
@@ -32,46 +35,18 @@ class AgeTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "age 1 - 10",
-            "alter 1 - 10",
-            "age [1,10]",
-            "age [1,10)",
-            "age (1,10)",
-            "age (1,10]",
-            "alter [1,10]",
-            "alter [1,10)",
-            "alter (1,10)",
-            "alter (1,10]"
+            "gender male",
+//            "gender female",
+//            "gender both",
+//            "gender unknown",
+//            "geschlecht männlich",
+//            "geschlecht weiblich",
+//            "geschlecht beide",
+//            "geschlecht unbekannt"
     })
-    void validAge(String token) {
+    void validGender(String token) {
         testToken(token);
         assertThat(listener.getErrors()).isEmpty();
-        assertThat(listener.getAgeCriteria().get(0).getStart()).isOne();
-        assertThat(listener.getAgeCriteria().get(0).getEnd()).isEqualTo(10);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {
-            "age 1, 10",
-            "age 1,10]",
-            "age [1,10",
-            "age [1 - 10]",
-    })
-    void invalidAge(String token) {
-        testToken(token);
-        assertThat(listener.getErrors()).isNotEmpty();
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {
-            "age 1 - 10",
-            "alter 1 - 10",
-    })
-    void inclusiveForNoBrackets(String token) {
-        testToken(token);
-        assertThat(listener.getAgeCriteria()).isNotEmpty();
-        assertThat(listener.getAgeCriteria().get(0).isInclusiveStart()).isTrue();
-        assertThat(listener.getAgeCriteria().get(0).isInclusiveEnd()).isTrue();
     }
 
     @ParameterizedTest

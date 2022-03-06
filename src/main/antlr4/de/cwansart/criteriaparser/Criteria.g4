@@ -1,14 +1,34 @@
 grammar Criteria;
-r   : age (',' age)*
+r   : availableToken (',' availableToken)*
     ;
+
+availableToken: age
+              | gender
+              ;
+
+// Age
+age: ageIdentifier INT '-' INT
+   | ageIdentifier OPENING_BRACKETS INT ',' INT CLOSING_BRACKETS
+   ;
 
 ageIdentifier : 'age'
               | 'alter'
               ;
 
-age: ageIdentifier INT '-' INT
-   | ageIdentifier OPENING_BRACKETS INT ',' INT CLOSING_BRACKETS
-   ;
+// Gender
+gender : 'gender' GENDER_TOKEN
+       | 'geschlecht' GENDER_TOKEN
+       ;
+
+GENDER_TOKEN: 'male'
+            | 'female'
+            | 'both'
+            | 'unkown'
+            | 'männlich'
+            | 'weiblich'
+            | 'beide'
+            | 'unbekannt'
+            ;
 
 // Tokens
 INT :  '0'..'9'+ ; //

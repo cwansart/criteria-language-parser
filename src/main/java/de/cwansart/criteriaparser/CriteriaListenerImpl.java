@@ -14,12 +14,18 @@ public class CriteriaListenerImpl implements CriteriaListener {
 
     private final List<AgeRange> ageCriteria = new ArrayList<>();
 
+    private Gender gender;
+
     public List<String> getErrors() {
         return errors;
     }
 
     public List<AgeRange> getAgeCriteria() {
         return ageCriteria;
+    }
+
+    public Gender getGender() {
+        return gender;
     }
 
     @Override
@@ -41,6 +47,11 @@ public class CriteriaListenerImpl implements CriteriaListener {
 
     private boolean isNullOrBracket(TerminalNode node) {
         return node == null || node.getText().equals("[") || node.getText().equals("]");
+    }
+
+    @Override
+    public void enterGender(CriteriaParser.GenderContext ctx) {
+        gender = Gender.fromString(ctx.GENDER_TOKEN().getText());
     }
 
     //<editor-fold desc="nothing to do">
@@ -70,12 +81,27 @@ public class CriteriaListenerImpl implements CriteriaListener {
     }
 
     @Override
+    public void enterAvailableToken(CriteriaParser.AvailableTokenContext ctx) {
+        // nothing to do
+    }
+
+    @Override
+    public void exitAvailableToken(CriteriaParser.AvailableTokenContext ctx) {
+        // nothing to do
+    }
+
+    @Override
     public void enterAgeIdentifier(CriteriaParser.AgeIdentifierContext ctx) {
         // nothing to do
     }
 
     @Override
     public void exitAgeIdentifier(CriteriaParser.AgeIdentifierContext ctx) {
+        // nothing to do
+    }
+
+    @Override
+    public void exitGender(CriteriaParser.GenderContext ctx) {
         // nothing to do
     }
 
