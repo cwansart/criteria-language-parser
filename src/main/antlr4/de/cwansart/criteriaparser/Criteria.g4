@@ -1,6 +1,6 @@
 grammar Criteria;
-r   : age
-    ;         // match keyword hello followed by an identifier
+r   : age (',' age)*
+    ;
 
 ageIdentifier : 'age'
               | 'alter'

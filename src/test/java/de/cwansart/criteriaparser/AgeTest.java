@@ -73,4 +73,17 @@ class AgeTest {
         assertThat(listener.getAgeCriteria().get(0).isInclusiveEnd()).isTrue();
         assertThat(listener.getAgeCriteria().get(0).isInclusiveEnd()).isTrue();
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "age 1 - 10, age 15 - 20",
+            "alter 1 - 10, age 15 - 20",
+            "alter 1 - 10, alter 15 - 20",
+    })
+    void multipleRanges(String token) {
+        testToken(token);
+        assertThat(listener.getAgeCriteria()).hasSize(2);
+    }
+
+
 }
