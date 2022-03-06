@@ -23,13 +23,28 @@ public class CriteriaListenerImpl implements CriteriaListener {
     }
 
     @Override
-    public void visitTerminal(TerminalNode terminalNode) {
-        // nothing to do
+    public void visitErrorNode(ErrorNode errorNode) {
+        this.errors.add(errorNode.getText());
     }
 
     @Override
-    public void visitErrorNode(ErrorNode errorNode) {
-        this.errors.add(errorNode.getText());
+    public void enterAge(CriteriaParser.AgeContext ctx) {
+        // The range will be inclusive if no brackets are given, e.g. "age 1 - 10".
+        boolean inclusiveStart = isNullOrBracket(ctx.OPENING_BRACKETS());
+        boolean inclusiveEnd = isNullOrBracket(ctx.CLOSING_BRACKETS());
+        int start = Integer.parseInt(ctx.INT(0).getText());
+        int end = Integer.parseInt(ctx.INT(1).getText());
+        this.ageCriteria.add(new AgeRange(inclusiveStart, inclusiveEnd, start, end));
+    }
+
+    private boolean isNullOrBracket(TerminalNode node) {
+        return node == null || node.getText().equals("[") || node.getText().equals("]");
+    }
+
+    //<editor-fold desc="nothing to do">
+    @Override
+    public void visitTerminal(TerminalNode terminalNode) {
+        // nothing to do
     }
 
     @Override
@@ -63,21 +78,8 @@ public class CriteriaListenerImpl implements CriteriaListener {
     }
 
     @Override
-    public void enterAge(CriteriaParser.AgeContext ctx) {
-        // The range will be inclusive if no brackets are given, e.g. "age 1 - 10".
-        boolean inclusiveStart = isNullOrBracket(ctx.OPENING_BRACKETS());
-        boolean inclusiveEnd = isNullOrBracket(ctx.CLOSING_BRACKETS());
-        int start = Integer.parseInt(ctx.INT(0).getText());
-        int end = Integer.parseInt(ctx.INT(1).getText());
-        this.ageCriteria.add(new AgeRange(inclusiveStart, inclusiveEnd, start, end));
-    }
-
-    private boolean isNullOrBracket(TerminalNode node) {
-        return node == null || node.getText().equals("[") || node.getText().equals("]");
-    }
-
-    @Override
     public void exitAge(CriteriaParser.AgeContext ctx) {
         // nothing to do
     }
+    //</editor-fold>
 }
