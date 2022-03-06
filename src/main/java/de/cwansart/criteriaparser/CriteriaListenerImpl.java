@@ -32,9 +32,12 @@ public class CriteriaListenerImpl implements CriteriaListener {
         // The range will be inclusive if no brackets are given, e.g. "age 1 - 10".
         boolean inclusiveStart = isNullOrBracket(ctx.OPENING_BRACKETS());
         boolean inclusiveEnd = isNullOrBracket(ctx.CLOSING_BRACKETS());
-        int start = Integer.parseInt(ctx.INT(0).getText());
-        int end = Integer.parseInt(ctx.INT(1).getText());
-        this.ageCriteria.add(new AgeRange(inclusiveStart, inclusiveEnd, start, end));
+        int start = ctx.INT(0) != null ? Integer.parseInt(ctx.INT(0).getText()) : 0;
+        int end = ctx.INT(1) != null ? Integer.parseInt(ctx.INT(1).getText()) : 0;
+        if (ctx.INT(0) != null || ctx.INT(1) != null) {
+            this.ageCriteria.add(new AgeRange(inclusiveStart, inclusiveEnd, start, end));
+        }
+
     }
 
     private boolean isNullOrBracket(TerminalNode node) {

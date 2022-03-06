@@ -70,7 +70,7 @@ class AgeTest {
     void inclusiveForNoBrackets(String token) {
         testToken(token);
         assertThat(listener.getAgeCriteria()).isNotEmpty();
-        assertThat(listener.getAgeCriteria().get(0).isInclusiveEnd()).isTrue();
+        assertThat(listener.getAgeCriteria().get(0).isInclusiveStart()).isTrue();
         assertThat(listener.getAgeCriteria().get(0).isInclusiveEnd()).isTrue();
     }
 
