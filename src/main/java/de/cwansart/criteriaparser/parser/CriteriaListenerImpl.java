@@ -1,4 +1,4 @@
-package de.cwansart.criteriaparser;
+package de.cwansart.criteriaparser.parser;
 
 import de.cwansart.criteriaparser.entities.AgeRange;
 import de.cwansart.criteriaparser.entities.Gender;

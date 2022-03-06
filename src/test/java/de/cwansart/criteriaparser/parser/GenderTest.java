@@ -1,8 +1,5 @@
 package de.cwansart.criteriaparser.parser;
 
-import de.cwansart.criteriaparser.CriteriaLexer;
-import de.cwansart.criteriaparser.CriteriaListenerImpl;
-import de.cwansart.criteriaparser.CriteriaParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;

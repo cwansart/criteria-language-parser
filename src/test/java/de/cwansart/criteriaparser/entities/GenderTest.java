@@ -1,6 +1,5 @@
 package de.cwansart.criteriaparser.entities;
 
-import de.cwansart.criteriaparser.entities.Gender;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

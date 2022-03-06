@@ -23,7 +23,7 @@ gender : 'gender' GENDER_TOKEN
 GENDER_TOKEN: 'male'
             | 'female'
             | 'both'
-            | 'unkown'
+            | 'unknown'
             | 'männlich'
             | 'weiblich'
             | 'beide'
