@@ -1,9 +1,8 @@
 # Criteria Language Parser
 
-To compile and run:
+To compile and run tests:
 ```
-mvn package
-java -jar target/criteria-language-parser
+mvn test
 ```
 
-When you change the Citeria.g4 you have to recompile via `mvn package`.
+When you change the Citeria.g4 you have to generate the source code via `mvn antlr4:antlr4`.
