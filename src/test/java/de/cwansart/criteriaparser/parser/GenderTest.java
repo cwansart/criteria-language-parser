@@ -36,13 +36,13 @@ class GenderTest {
     @ParameterizedTest
     @ValueSource(strings = {
             "gender male",
-//            "gender female",
-//            "gender both",
-//            "gender unknown",
-//            "geschlecht männlich",
-//            "geschlecht weiblich",
-//            "geschlecht beide",
-//            "geschlecht unbekannt"
+            "gender female",
+            "gender both",
+            "gender unknown",
+            "geschlecht männlich",
+            "geschlecht weiblich",
+            "geschlecht beide",
+            "geschlecht unbekannt"
     })
     void validGender(String token) {
         testToken(token);
