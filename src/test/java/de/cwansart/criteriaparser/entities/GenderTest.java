@@ -1,11 +1,9 @@
-package de.cwansart.criteriaparser;
+package de.cwansart.criteriaparser.entities;
 
+import de.cwansart.criteriaparser.entities.Gender;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class GenderTest {
 

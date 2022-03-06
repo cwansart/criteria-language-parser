@@ -1,4 +1,4 @@
-package de.cwansart.criteriaparser;
+package de.cwansart.criteriaparser.entities;
 
 import java.util.Arrays;
 

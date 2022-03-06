@@ -1,6 +1,7 @@
 package de.cwansart.criteriaparser;
 
 import de.cwansart.criteriaparser.entities.AgeRange;
+import de.cwansart.criteriaparser.entities.Gender;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
